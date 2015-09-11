@@ -1,0 +1,18 @@
+.uploaded-image {
+    border: solid lightgrey 1px;
+    margin-bottom: 20px;
+}
+
+.uploaded-image-div {
+    margin: inherit 40px;
+}
+
+.cc-attribution-block {
+    font-style: italic;
+}
+
+.cc-attribution-copy-button {
+    margin-top: 5px;
+    font-style: normal;
+    font-weight: bold;
+}

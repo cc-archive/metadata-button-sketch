@@ -1,0 +1,14 @@
+
+# Serving Examples
+
+php -S localhost:7000
+
+
+# Adding CC Metadata with exiftool
+
+Note use of newer xmpRights rather than xapRights prefix.
+
+    exiftool -XMP-dc:title="Tree" \
+        -XMP-cc:attributionName="Rob Myers" \
+        -XMP-cc:License="http://creativecommons.org/licenses/by-sa/4.0/" \
+        -XMP-xmpRights:Webstatement="https://robmyers.org/" images/tree.jpg
