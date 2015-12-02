@@ -3,6 +3,15 @@
 
 php -S localhost:7000
 
+# Compatibility Note
+
+The clipboard copy command is supported in Chrome 42, Firedox 41, IE 9 and *not*
+in Safari.
+
+We should check for older versions and either:
+
+* Display the text selected in a popup/tooltip and ask people to copy it.
+* Use a Flash fallback, i.e. - https://github.com/zeroclipboard/zeroclipboard
 
 # Adding CC Metadata with exiftool
 
@@ -12,3 +21,5 @@ Note use of newer xmpRights rather than xapRights prefix.
         -XMP-cc:attributionName="Rob Myers" \
         -XMP-cc:License="http://creativecommons.org/licenses/by-sa/4.0/" \
         -XMP-xmpRights:Webstatement="https://robmyers.org/" images/tree.jpg
+
+We should add support for EXIF.

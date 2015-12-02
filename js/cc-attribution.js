@@ -7,19 +7,19 @@ var ccObjectURLToBlob = function (url, callback) {
   var http = new XMLHttpRequest();
   http.open("GET", url, true);
   http.responseType = "blob";
-  console.log(url);
+  //console.log(url);
   http.onload = function(e) {
-    console.log(url);
-    console.log(this);
+    //console.log(url);
+    //console.log(this);
     if (this.status == 200 || this.status === 0) {
-      console.log('OK');
+      //console.log('OK');
       callback(this.response);
     }
   };
   http.send();
 };
 
-var ccCopyTextNaughtily = function (text) {
+/*var ccCopyTextNaughtily = function (text) {
   var element = document.createElement('textarea');
   document.body.appendChild(element);
   element.innerHTML = text;
@@ -37,7 +37,8 @@ var ccCopyTextNaughtily = function (text) {
   }
   element.setSelectionRange(0, 0);
   document.body.removeChild(element);
-};
+};*/
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // Fetch metadata and add attribution and button to element
@@ -49,12 +50,13 @@ var ccAddAttributionButtonHTML = function (element, attribution, locale) {
     var button = document.createElement('button');
     button.type="button";
     button.className += 'cc-attribution-copy-button';
+    button.setAttribute('data-clipboard-text', attribution);
     button.innerHTML = "Copy attribution to clipboard.";
     element.appendChild(button);
-    button.addEventListener("click", function(event) {
+    /*button.addEventListener("click", function(event) {
       event.preventDefault();
       ccCopyTextNaughtily(attribution);
-    });
+    });*/
   } else {
     //element.appendChild("<p>Copy this text to include and attribute the work.</p>");
   }
@@ -64,11 +66,11 @@ var ccAddAttributionButtonHTML = function (element, attribution, locale) {
 var addAttributionBlockAndButton = function (img, element, locale) {
   locale = typeof locale !== 'undefined' ? locale : 'en';
   var img_url = img.src;
-  console.log(img_url);
+  //console.log(img_url);
   ccObjectURLToBlob(img_url, function (blob) {
-    console.log(2);
+    //console.log(2);
     ccParseXMP(blob, function(err, xmp) {
-      console.log(img_url + " " + err);
+      //console.log(img_url + " " + err);
       if (! err) {
         var attribution = ccLicenseToHTMLPlusRDFa(xmp.workTitle, img_url,
                                                   xmp.attributionName,
